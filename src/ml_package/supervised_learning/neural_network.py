@@ -38,7 +38,7 @@ class MSE:
         a: numpy.ndarray, shape (n_outputs, n_samples)
             Predicted output activations from the network.
         y: numpy.ndarray, shape (n_outputs, n_samples)
-            Actual values we are trying to predict.
+            Observed target values.
 
         Returns
         -------
@@ -62,7 +62,7 @@ class MSE:
         a: numpy.ndarray, shape (n_outputs, n_samples)
             Output activations of the network.
         y: numpy.ndarray, shape (n_outputs, n_samples)
-            Actual values we are trying to predict.
+            Observed target values.
 
         Returns
         -------
@@ -112,7 +112,7 @@ class CrossEntropy:
         a: numpy.ndarray, shape (n_outputs, n_samples)
             Predicted output activations (probabilities in (0, 1)).
         y: numpy.ndarray, shape (n_outputs, n_samples)
-            Actual values we are trying to predict (binary or one-hot encoded).
+            Observed target values (binary or one-hot encoded).
 
         Returns
         -------
@@ -138,7 +138,7 @@ class CrossEntropy:
         a: numpy.ndarray, shape (n_outputs, n_samples)
             Output activations of the network (predicted probabilities).
         y: numpy.ndarray, shape (n_outputs, n_samples)
-            Actual values we are trying to predict
+            Observed target values.
 
         Returns
         -------
@@ -386,6 +386,11 @@ class NeuralNetwork(object):
         activations to all hidden layers and the appropriate activation
         to the output layer. This public method returns only the final
         output and is intended for inference and evaluation.
+
+        For classification tasks, the method returns the raw network output 
+        (probabilities). Thus, post-processing must be applied manually. For
+        binary classification, run ``int(output > 0.5)``, and for multiple
+        classification, run ``np.argmax(output)``.
 
         Parameters
         ----------
