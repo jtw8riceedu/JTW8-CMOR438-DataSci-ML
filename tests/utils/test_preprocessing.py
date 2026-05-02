@@ -194,3 +194,87 @@ def test_scalers_require_fit_before_transform():
 
     with pytest.raises(RuntimeError, match="Call fit"):
         MinMaxScaler().transform([[1.0]])
+
+
+# ===========================================================================
+# Additional edge-case tests
+# ===========================================================================
+
+def test_train_test_split_mismatched_lengths():
+    X = np.ones((10, 2))
+    y = np.ones(8)
+    with pytest.raises(ValueError):
+        train_test_split(X, y)
+
+
+def test_train_test_split_invalid_float_size():
+    X = np.ones((20, 2))
+    y = np.ones(20)
+    with pytest.raises(ValueError):
+        train_test_split(X, y, test_size=1.5)
+
+
+def test_train_test_split_stratify_requires_shuffle():
+    X = np.ones((20, 2))
+    y = np.array([0] * 10 + [1] * 10)
+    with pytest.raises(ValueError):
+        train_test_split(X, y, shuffle=False, stratify=y)
+
+
+def test_standard_scaler_zero_variance_no_nan():
+    X = np.column_stack([np.ones(10), np.arange(10, dtype=float)])
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+    assert np.all(np.isfinite(X_scaled))
+
+
+def test_minmax_scaler_invalid_range_raises():
+    with pytest.raises(ValueError):
+        MinMaxScaler(feature_range=(1, 0)).fit(np.ones((5, 2)))
+
+
+def test_minmax_scaler_custom_range():
+    rng = np.random.default_rng(0)
+    X = rng.uniform(-5, 5, (30, 2))
+    scaler = MinMaxScaler(feature_range=(-1, 1))
+    X_scaled = scaler.fit_transform(X)
+    assert np.min(X_scaled) >= -1.0 - 1e-10
+    assert np.max(X_scaled) <= 1.0 + 1e-10
+
+
+def test_k_fold_invalid_n_splits():
+    X = np.ones((20, 2))
+    with pytest.raises(ValueError):
+        k_fold_split(X, n_splits=1)
+
+
+def test_k_fold_n_splits_float_type_error():
+    X = np.ones((20, 2))
+    with pytest.raises(TypeError):
+        k_fold_split(X, n_splits=5.0)
+
+
+def test_k_fold_all_samples_covered():
+    X = np.ones((50, 2))
+    folds = k_fold_split(X, n_splits=5, random_state=0)
+    all_val = np.concatenate([v for _, v in folds])
+    assert len(np.unique(all_val)) == 50
+
+
+def test_train_val_test_sizes_sum():
+    rng = np.random.default_rng(0)
+    X = rng.standard_normal((80, 3))
+    y = np.zeros(80)
+    X_tr, X_val, X_te, y_tr, y_val, y_te = train_val_test_split(
+        X, y, val_size=0.15, test_size=0.15, random_state=0
+    )
+    assert len(X_tr) + len(X_val) + len(X_te) == 80
+
+
+def test_randomized_search_invalid_n_iter():
+    from src.ml_package.supervised_learning.knn import KNN
+    rng = np.random.default_rng(0)
+    X = rng.standard_normal((40, 2))
+    y = (X[:, 0] > 0).astype(int)
+    with pytest.raises(ValueError):
+        randomized_search_cv(KNN, {"k": [1]}, X, y, n_iter=0)
