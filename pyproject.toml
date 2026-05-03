@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ml_package"
+version = "0.1.0"
+description = "An example machine learning package with numerous supervised and unsupervised algorithms."
+authors = [{name = "Jace Winfree", email = "jtw8@rice.edu"}]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dependencies = ["numpy", "matplotlib", "seaborn", "pandas", "pytest"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

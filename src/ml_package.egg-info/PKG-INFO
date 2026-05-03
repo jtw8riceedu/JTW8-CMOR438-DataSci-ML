@@ -1,0 +1,17 @@
+Metadata-Version: 2.4
+Name: ml_package
+Version: 0.1.0
+Summary: An example machine learning package with numerous supervised and unsupervised algorithms.
+Author-email: Jace Winfree <jtw8@rice.edu>
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: pandas
+Requires-Dist: pytest
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Dynamic: license-file
