@@ -10,7 +10,7 @@ A more detailed overview can be found below.
 
 ## Overview of the Algorithm
 
-**1. Define Neighborhood Parameters**
+### 1. Define Neighborhood Parameters 
 
 DBSCAN relies on two user-defined parameters: $\varepsilon$ (epsilon) and *min_samples*. The parameter $\varepsilon$ defines the radius of the neighborhood around a point, and *min_samples* is the minimum number of points required within that radius for a point to be considered a core point. Together, these parameters control the density threshold that separates clusters from noise.
 
@@ -33,7 +33,7 @@ $$
 $$
 
 
-**2. Identify Density-Reachable Points**
+### 2. Identify Density-Reachable Points
 
 Once core points are identified, DBSCAN expands clusters by following chains of density-reachable points. A point $q$ is said to be **directly density-reachable** from a core point $p$ if $q$ lies within the $\varepsilon$-neighborhood of $p$:
 
@@ -44,7 +44,7 @@ $$
 More generally, a point $q$ is **density-reachable** from $p$ if there exists a chain of points $p_1, p_2, \ldots, p_n$ where $p_1 = p$, $p_n = q$, and each $p_{i+1}$ is directly density-reachable from $p_i$. Two points are **density-connected** if there exists a third point from which both are density-reachable. Clusters are defined as maximal sets of density-connected points.
 
 
-**3. Expand Clusters and Label Points**
+### 3. Expand Clusters and Label Points
 
 The algorithm begins by selecting an arbitrary unvisited point. If the point is a core point, a new cluster is formed and expanded by iteratively adding all density-reachable points to the cluster. If a newly added point is itself a core point, its neighborhood is also explored and added to the cluster. This process continues until no more points can be added, at which point the algorithm moves on to the next unvisited point.
 

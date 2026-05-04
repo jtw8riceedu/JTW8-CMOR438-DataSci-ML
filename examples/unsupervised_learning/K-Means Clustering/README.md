@@ -7,11 +7,11 @@ After re-assigning the points, we repeat this procedure, calculating the new cen
 
 ## Overview of the Algorithm
 
-**1. Initialize Centroids**
+### 1. Initialize Centroids
 
 The first step is to select *K* initial centroids. In the KMeans class, centroids are initialized by randomly sampling from the data. 
 
-**2. Assignment Step**
+### 2. Assignment Step
 
 With centroids initialized, each data point is assigned to the cluster whose centroid is closest to it. The distance between a point $x_i$ and centroid $\mu_k$ is measured using the Euclidean distance:
 
@@ -28,7 +28,7 @@ $$
 This assignment step partitions the dataset into *K* clusters $C_1, C_2, \ldots, C_K$.
 
 
-**3. Update Step**
+### 3. Update Step
 
 Once all points have been assigned, the centroid of each cluster is recomputed as the mean of all points currently assigned to it:
 
@@ -43,6 +43,6 @@ J = \sum_{k=1}^{K} \sum_{x_i \in C_k} \| x_i - \mu_k \|^2
 $$
 
 
-**4. Iterate Until Convergence**
+### 4. Iterate Until Convergence
 
 The assignment and update steps are repeated until the algorithm converges. Convergence is reached when the centroids or cluster assignments no longer change. The KMeans class runs the algorithm multiple times (with the default being 100) and retains the solution with the lowest final value of $J$.
