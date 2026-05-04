@@ -2,9 +2,9 @@
 
 This notebook introduces a comprehensive feedforward neural network capable of handling regression and classification tasks. A neural network consists of multiple layers of "neurons", which are essentially computational units that take input values, apply weights to scale these values, and pass them through an activation function to return an output. Each output is then passed onto neurons in the next layer. The network in general is composed of three parts: 
 
-* The input layer takes in the feature data 
-* The hidden layer(s) transform the data according to the activation function 
-* The output layer yields the final predictions  
+* The **input layer** takes in the feature data 
+* The **hidden layer(s)** transform the data according to the activation function 
+* The **output layer** yields the final predictions  
 
 A brief overview of neural networks can be found below. For a more detailed explanation of how neural networks work, Micheal Nielsen's book [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/index.html) is a great resource.
 
