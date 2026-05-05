@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from src.ml_package.supervised_learning import CrossEntropy, MSE, NeuralNetwork
+from ml_package.supervised_learning import CrossEntropy, MSE, NeuralNetwork
 
 
 # ---------------------------------------------------------------------------

@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from src.ml_package.unsupervised_learning.pca import PCA
+from ml_package.unsupervised_learning.pca import PCA
 
 
 # ---------------------------------------------------------------------------

@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from src.ml_package.supervised_learning.decision_tree import (
+from ml_package.supervised_learning.decision_tree import (
     DecisionTreeClassifier,
     DecisionTreeRegressor,
 )

@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from src.ml_package.supervised_learning.logistic_regression import LogisticRegression
+from ml_package.supervised_learning.logistic_regression import LogisticRegression
 
 
 # ---------------------------------------------------------------------------

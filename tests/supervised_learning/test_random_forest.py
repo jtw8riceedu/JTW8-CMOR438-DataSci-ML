@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from src.ml_package.supervised_learning.random_forest import RandomForestClassifier
+from ml_package.supervised_learning.random_forest import RandomForestClassifier
 
 
 # ---------------------------------------------------------------------------

@@ -3,15 +3,15 @@
 import numpy as np
 import pytest
 
-from src.ml_package.supervised_learning.voting import (
+from ml_package.supervised_learning.voting import (
     HardVotingClassifier,
     VotingRegressor,
 )
-from src.ml_package.supervised_learning.decision_tree import (
+from ml_package.supervised_learning.decision_tree import (
     DecisionTreeClassifier,
     DecisionTreeRegressor,
 )
-from src.ml_package.supervised_learning.knn import KNN
+from ml_package.supervised_learning.knn import KNN
 
 
 # ---------------------------------------------------------------------------

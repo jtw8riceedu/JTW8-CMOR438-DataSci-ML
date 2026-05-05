@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from src.ml_package.supervised_learning.linear_regression import LinearRegression
+from ml_package.supervised_learning.linear_regression import LinearRegression
 
 
 # ---------------------------------------------------------------------------

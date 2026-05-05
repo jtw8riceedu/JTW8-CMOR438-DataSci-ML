@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from src.ml_package.unsupervised_learning.kmeans import KMeans
+from ml_package.unsupervised_learning.kmeans import KMeans
 
 
 # ---------------------------------------------------------------------------
