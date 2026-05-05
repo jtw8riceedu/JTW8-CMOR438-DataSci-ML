@@ -1,6 +1,6 @@
 # Voting Classifiers and Regressors
 
-This notebook introduces the `HardVotingClassifier and VotingRegressor` classes, a family of ensemble learning methods that combine the predictions of multiple base estimators to produce a single, more robust prediction. The core idea is that a group of diverse models, each with different strengths and weaknesses, will collectively outperform any individual model by reducing variance and correcting for individual errors. The `HardVotingClassifier` and `VotingRegressor` classes in this package support models with prediction methods (i.e. supervised learning), such as `KNN` and `LinearRegression`. Note that the voting models do not support instances of the `NeuralNetwork` class as there is no clear predict method defined. 
+This notebook introduces the `HardVotingClassifier` and `VotingRegressor` classes, a family of ensemble learning methods that combine the predictions of multiple base estimators to produce a single, more robust prediction. The core idea is that a group of diverse models, each with different strengths and weaknesses, will collectively outperform any individual model by reducing variance and correcting for individual errors. The `HardVotingClassifier` and `VotingRegressor` classes in this package support models with prediction methods (i.e. supervised learning), such as `KNN` and `LinearRegression`. Note that the voting models do not support instances of the `NeuralNetwork` class as there is no clear predict method defined. 
 
 A more detailed overview of how voting classifiers and voting regressors work can be found below.
 
@@ -49,4 +49,4 @@ Averaging reduces the variance of the final prediction relative to any individua
 
 ### 4. Weighted Voting
 
-The `HardVotingClassifier and VotingRegressor` classes also support assigning a weight $w_m$ to each base estimator, allowing the user to specify which models should have more or less importance in the aggregated predictions. Weights are typically assigned according to which models are more accurate or trusted by the user.
+The `HardVotingClassifier` and `VotingRegressor` classes also support assigning a weight $w_m$ to each base estimator, allowing the user to specify which models should have more or less importance in the aggregated predictions. Weights are typically assigned according to which models are more accurate or trusted by the user.
