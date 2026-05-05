@@ -192,7 +192,7 @@ class LinearRegression(object):
         self.weights = np.random.randn(p)
         self.bias = np.random.randn()
 
-         # Perform forward pass and calculate derivative of the cost
+        # Perform forward pass and calculate derivative of the cost
         for _ in range(epochs):
             y_hat = self.feedforward(X)
             delta = self._cost_delta(y_hat, y)
