@@ -1,6 +1,6 @@
 # Voting Classifiers and Regressors
 
-This notebook introduces voting ensembles, a family of ensemble learning methods that combine the predictions of multiple base estimators to produce a single, more robust prediction. The core idea is that a group of diverse models, each with different strengths and weaknesses, will collectively outperform any individual model by reducing variance and correcting for individual errors. The HardVotingClassifier and VotingRegressor classes in this package support models with prediction methods (i.e. supervised learning), such as KNN and linear regression. Note that the voting models do not support instances of the NeuralNetwork class as there is no clear predict method defined. 
+This notebook introduces the `HardVotingClassifier and VotingRegressor` classes, a family of ensemble learning methods that combine the predictions of multiple base estimators to produce a single, more robust prediction. The core idea is that a group of diverse models, each with different strengths and weaknesses, will collectively outperform any individual model by reducing variance and correcting for individual errors. The `HardVotingClassifier` and `VotingRegressor` classes in this package support models with prediction methods (i.e. supervised learning), such as `KNN` and `LinearRegression`. Note that the voting models do not support instances of the `NeuralNetwork` class as there is no clear predict method defined. 
 
 A more detailed overview of how voting classifiers and voting regressors work can be found below.
 
@@ -38,15 +38,15 @@ where $\mathbf{1}[\hat{y}_m = k]$ is an indicator that equals 1 if the $m$-th es
 
 **VotingRegressor**
 
-For regression, the VotingRegressor returns the average of the predicted values from the base estimators:
+For regression, the `VotingRegressor` returns the average of the predicted values from the base estimators:
 
 $$
 \hat{y} = \frac{1}{M} \sum_{m=1}^{M} \hat{y}_m
 $$
 
-Averaging reduces the variance of the final prediction relative to any individual estimator, which typically improves performance on unseen data — particularly when the base estimators tend to overfit in different ways.
+Averaging reduces the variance of the final prediction relative to any individual estimator, which typically improves performance on unseen data, especially when the base estimators tend to overfit in different ways.
 
 
 ### 4. Weighted Voting
 
-The VotingClassifier and VotingRegressor classes also support assigning a weight $w_m$ to each base estimator, allowing the user to specify which models should have more or less importance in the aggregated predictions. Weights are typically assigned according to which models are more accurate or trusted by the user.
+The `HardVotingClassifier and VotingRegressor` classes also support assigning a weight $w_m$ to each base estimator, allowing the user to specify which models should have more or less importance in the aggregated predictions. Weights are typically assigned according to which models are more accurate or trusted by the user.
