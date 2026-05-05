@@ -2,6 +2,7 @@
 
 This notebook introduces the `RandomForestClassifier` and `RandomForestRegressor` classes, which are ensemble methods that train a large number of decision trees and aggregate their predictions. Each tree in the forest is trained on a **different random sample of the data** (bootstrap sample) and uses only a **random subset of features at each split**. This combination of randomness aims to combat any overfitting within any individual decision tree.
 
+A more detailed overview of random forests can be found below.
 
 ## Overview of the Algorithm
 

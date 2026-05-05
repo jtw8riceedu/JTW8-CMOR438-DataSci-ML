@@ -1,18 +1,14 @@
 # Principal Component Analysis (PCA)
 
-This notebook introduces Principal Component Analysis (PCA), an unsupervised dimensionality reduction technique that transforms a dataset into a lower-dimensional representation while preserving as much variance as possible. PCA works by identifying the directions in the feature space along which the data varies the most, and projecting the data onto those directions. The key components of the algorithm are:
+This notebook introduces the `PCA` (Principal Component Analysis) class, an unsupervised dimensionality reduction algorithm that transforms a dataset into a lower-dimensional representation while preserving as much variance as possible. PCA works by identifying the directions in the feature space along which the data varies the most, and projecting the data onto those directions. 
 
-* **Principal components** are the orthogonal directions of maximum variance in the data, ordered from most to least variance explained
-* **The covariance matrix** captures the pairwise relationships between features and is used to identify the principal components
-* **The projection** maps the original high-dimensional data onto the lower-dimensional subspace defined by the top principal components
-
-A more detailed overview can be found below.
+A more detailed overview of PCA can be found below.
 
 ## Overview of the Algorithm
 
 ### 1. Standardize the Data
 
-Before computing principal components, the data must be scaled so that features with larger scales don't dominate. In this package, it is recommended to scale the data using the StandardScaler class. StandardScaler works by taking each data point, subtracting the mean of the feature it belongs to, and dividing by the standard deviation of that feature. In other words, for each feature $j$, each value is transformed as:
+Before computing principal components, the **data must be scaled** so that features with larger scales don't dominate. In this package, it is recommended to scale the data using the `StandardScaler` class. `StandardScaler` works by taking each data point, subtracting the mean of the feature it belongs to, and dividing by the standard deviation of that feature. In other words, for each feature $j$, each value is transformed as:
 
 $$
 x_{ij}' = \frac{x_{ij} - \bar{x}_j}{s_j}
@@ -23,7 +19,7 @@ where $\bar{x}_j$ is the mean and $s_j$ is the standard deviation of feature $j$
 
 ### 2. Compute the Covariance Matrix
 
-The next step is to compute the covariance matrix of the standardized data, which indicates the direction and relative magnitude with which each pair of features varies together. The covariance matrix $\Sigma$ is a $p \times p$ symmetric matrix defined as:
+The next step is to compute the **covariance matrix** of the standardized data, which indicates the direction and relative magnitude with which each pair of features varies together. The covariance matrix $\Sigma$ is a $p \times p$ symmetric matrix defined as:
 
 $$
 \Sigma = \frac{1}{n - 1} X^T X
@@ -34,7 +30,7 @@ The diagonal entries of $\Sigma$ are the variances of each feature, and the off-
 
 ### 3. Compute Eigenvectors and Eigenvalues
 
-PCA identifies the principal components by performing an eigendecomposition of the covariance matrix. The eigenvectors and eigenvalues of $\Sigma$ satisfy:
+PCA identifies the principal components by performing an **eigendecomposition of the covariance matrix**. The eigenvectors and eigenvalues of $\Sigma$ satisfy:
 
 $$
 \Sigma v = \lambda v
@@ -53,7 +49,7 @@ This quantity is useful for choosing how many components to retain. A common rul
 
 ### 4. Project the Data
 
-Finally, the original data is projected onto the top $d$ principal components to produce the reduced-dimensional representation. The projection matrix $W$ is formed by stacking the top $d$ eigenvectors as columns:
+Finally, the original data is projected onto the top $d$ principal components to produce the reduced-dimensional representation. The **projection matrix** $W$ is formed by stacking the top $d$ eigenvectors as columns:
 
 $$
 W = \begin{bmatrix} v_1 & v_2 & \cdots & v_d \end{bmatrix}

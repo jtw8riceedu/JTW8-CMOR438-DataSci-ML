@@ -1,15 +1,15 @@
 # Linear Regression
 
-This notebook introduces a single-neuron-based approach to linear regression trained with full-batch gradient descent. The model fits a linear relationship between input features and a continuous target variable by minimizing the mean squared error between predictions and observed values. Since the LinearRegression class takes a single-neuron approach, the class was derived from the more general NeuralNetwork class. In fact, linear regression can be performed by instantiating NeuralNetwork([p, 1], task = "regression"), which signals that we are giving each feature *p* an input neuron and creating a network with only one layer (the output layer). 
+This notebook introduces the `LinearRegression` class, which is a single-neuron-based approach to linear regression trained with full-batch gradient descent. The model fits a linear relationship between input features and a continuous target variable by minimizing the mean squared error between predictions and observed values. Since the `LinearRegression` class takes a single-neuron approach, the class was derived from the more general `NeuralNetwork` class. In fact, linear regression can be performed by instantiating `NeuralNetwork([p, 1], task = "regression")`, which signals that we are giving each feature *p* an input neuron and creating a network with only one layer (the output layer). 
 
- A more detailed overview of the linear regression algorithm can be found below.
+ A more detailed overview of the linear regression algorithm can be found below. Furthermore, a more general explanation of forward pass, gradient descent, and backpropagation, which are used in `LinearRegression`, can be found in the Neural Networks README.
 
 
 ## Overview of the Algorithm
 
 ### 1. Initialize Weights and Bias
 
-The first step is to initialize the model's parameters. In the LinearRegression class, the weights and bias are both sampled from a standard normal distribution. These initial values serve as the starting point for gradient descent.
+The first step is to initialize the model's parameters. In the `LinearRegression` class, the weights and bias are both sampled from a standard normal distribution. These initial values serve as the starting point for gradient descent.
 
 
 ### 2. Feedforward Phase

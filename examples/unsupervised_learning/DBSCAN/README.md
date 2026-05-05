@@ -1,18 +1,18 @@
 # DBSCAN
 
-This notebook introduces DBSCAN (Density-Based Spatial Clustering of Applications with Noise), an unsupervised clustering algorithm that groups data points based on the density of their neighborhoods. Unlike centroid-based methods, DBSCAN does not require specifying the number of clusters in advance and is capable of discovering clusters of arbitrary shape. The algorithm classifies each point into one of three categories:
+This notebook introduces the `DBSCAN` (Density-Based Spatial Clustering of Applications with Noise) class, an unsupervised clustering algorithm that groups data points based on the density of their neighborhoods. Unlike centroid-based methods, DBSCAN does not require specifying the number of clusters in advance and is capable of discovering clusters of arbitrary shape. The algorithm classifies each point into one of three categories:
 
 * **Core points** have a sufficiently dense neighborhood and form the interior of a cluster
 * **Border points** lie within the neighborhood of a core point but are not dense enough to be core points themselves
 * **Noise points** (outliers) do not belong to any cluster
 
-A more detailed overview can be found below.
+A more detailed overview of DBSCAN can be found below.
 
 ## Overview of the Algorithm
 
 ### 1. Define Neighborhood Parameters 
 
-DBSCAN relies on two user-defined parameters: $\varepsilon$ (epsilon) and *min_samples*. The parameter $\varepsilon$ defines the radius of the neighborhood around a point, and *min_samples* is the minimum number of points required within that radius for a point to be considered a core point. Together, these parameters control the density threshold that separates clusters from noise.
+`DBSCAN` relies on **two user-defined parameters**: $\varepsilon$ (epsilon) and *min_samples*. The parameter $\varepsilon$ defines the **radius of the neighborhood around a point**, and *min_samples* is the **minimum number of points required within that radius for a point to be considered a core point**. Together, these parameters control the density threshold that separates clusters from noise.
 
 The $\varepsilon$-neighborhood of a point $p$ is the set of all points within distance $\varepsilon$ of $p$:
 
@@ -20,16 +20,16 @@ $$
 N_\varepsilon(p) = \{ q \in D \mid d(p, q) \leq \varepsilon \}
 $$
 
-where $D$ is the dataset and $d(p, q)$ is the distance between points $p$ and $q$. The distance formula used in the DBSCAN class is Euclidean distance:
+where $D$ is the dataset and $d(p, q)$ is the distance between points $p$ and $q$. The distance formula used in the `DBSCAN` class is **Euclidean distance**:
 
 $$
 d(p, q) = \sqrt{\sum_{i=1}^{n} (p_i - q_i)^2}
 $$
 
-A point $p$ is a **core point** if it has at least *MinPts* points within its $\varepsilon$-neighborhood:
+A point $p$ is a **core point** if it has at least *min_samples* points within its $\varepsilon$-neighborhood:
 
 $$
-|N_\varepsilon(p)| \geq \text{MinPts}
+|N_\varepsilon(p)| \geq \text{min_samples}
 $$
 
 

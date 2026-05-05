@@ -1,6 +1,8 @@
 # K-Nearest Neighbors (KNN)
 
-This notebook introduces the `KNN` class, an algorithm that makes predictions based on the labels of the most similar training examples. The `KNN` class supports both classification (returning the majority class) and regression (returning the mean target value). A more detailed overview can be found below.
+This notebook introduces the `KNN` class, an algorithm that makes predictions based on the labels of the most similar training examples. The `KNN` class supports both classification (returning the majority class) and regression (returning the mean target value).
+
+A more detailed overview can be found below.
 
 
 ## Overview of the Algorithm
@@ -12,7 +14,7 @@ With KNN, there is no parameter optimization at fit time. The `fit()` method sim
 
 ### 2. Compute Distances
 
-At prediction time, the algorithm computes the Euclidean distance between a query point $x$ and every point in the training set. For two points $p$ and $q$ with $n$ features, the Euclidean distance is:
+At prediction time, the algorithm computes the **Euclidean distance** between a query point $x$ and every point in the training set. For two points $p$ and $q$ with $n$ features, the Euclidean distance is:
 
 $$
 d(p, q) = \sqrt{\sum_{i=1}^{n} (p_i - q_i)^2}
@@ -23,7 +25,7 @@ This is equivalent to $\sqrt{(p - q) \cdot (p - q)}$, which is how it is compute
 
 ### 3. Identify the $k$ Nearest Neighbors
 
-Once all pairwise distances have been computed, the training indices are sorted by distance in ascending order and the first $k$ samples are selected. The value of $k$ controls the **bias-variance tradeoff**: small values of $k$ produce low-bias, high-variance models that closely follow the training data, while large values of $k$ produce smoother, lower-variance predictions at the cost of potentially higher bias.
+Once all pairwise distances have been computed, the training indices are sorted by distance in ascending order and the **first $k$ samples are selected**. The value of $k$ controls the **bias-variance tradeoff**: small values of $k$ produce low-bias, high-variance models that closely follow the training data, while large values of $k$ produce smoother, lower-variance predictions at the cost of potentially higher bias.
 
 
 ### 4. Aggregate Neighbor Labels

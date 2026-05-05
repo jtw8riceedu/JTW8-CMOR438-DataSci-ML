@@ -1,6 +1,8 @@
 # Decision Trees
 
-This notebook introduces the `DecisionTreeClassifier` and `DecisionTreeRegressor` classes, which build binary tree structures that recursively partition the feature space to make predictions. At each internal node, the tree compares a single feature to a certain threshold, and routes each data point accordingly. Leaf nodes store the final prediction. A brief overview of how decision trees work can be found below. Another great resource that covers concepts including impurity, information gain, and recursion is this [Towards Data Science article](https://towardsdatascience.com/decision-trees-explained-entropy-information-gain-gini-index-ccp-pruning-4d78070db36c/). 
+This notebook introduces the `DecisionTreeClassifier` and `DecisionTreeRegressor` classes, which build binary tree structures that recursively partition the feature space to make predictions. At each internal node, the tree compares a single feature to a certain threshold, and routes each data point accordingly. Leaf nodes store the final prediction. 
+
+A brief overview of how decision trees work can be found below. Another great resource that covers concepts including impurity, information gain, and recursion is this [Towards Data Science article](https://towardsdatascience.com/decision-trees-explained-entropy-information-gain-gini-index-ccp-pruning-4d78070db36c/). 
 
 
 ## Overview of the Algorithm
@@ -39,7 +41,7 @@ $$
 The split that minimizes this weighted impurity is chosen. Samples with feature value $\leq$ threshold go left; all others go right.
 
 
-**3. Recursively Build the Tree**
+### 3. Recursively Build the Tree
 
 Starting at the root and working downward, the algorithm recursively applies the best-split logic at each node. A node is converted to a leaf — stopping further growth — when any of the following conditions are met: the maximum tree depth `max_depth` is reached, the node contains fewer than `min_samples_split` samples, the node is already pure (impurity = 0), or no valid split can be found that separates samples into two non-empty partitions.
 

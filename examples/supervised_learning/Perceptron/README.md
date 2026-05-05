@@ -2,7 +2,7 @@
 
 This notebook introduces the `Perceptron` class, a single-layer neural network unit trained with full-batch gradient descent. The perceptron model works by taking in a weighted combination of inputs and passing it through a nonlinear activation function to produce a binary output. It is designed for binary classification tasks where labels are $+1$ and $-1$. 
 
-A more detailed overview of the algorithm can be found below.
+A more detailed overview of the algorithm can be found below. Furthermore, a more general explanation of forward pass, gradient descent, and backpropagation, which are used in `Perceptron`, can be found in the Neural Networks README.
 
 ## Overview of the Algorithm
 
@@ -22,8 +22,11 @@ $$
 The activation functions and their derivatives are defined as follows:
 
 * **ReLU** returns positive values unchanged and negative values as zeros: $f(z) = \max(0, z)$, with derivative $f'(z) = \mathbf{1}[z \geq 0]$. 
+
 * **Leaky ReLU** is similar but allows a small negative slope: $f(z) = z$ if $z \geq 0$, else $0.01z$, with derivative $f'(z) = 1$ if $z \geq 0$, else $0.01$. Leaky ReLU ensures a non-zero gradient that will allow the network to continue learning. This helps combat the "dying neuron" problem that the ReLU function can create, in which neurons stop learning if they only receive negative values (due to the outputs and gradients becoming zero). More information on ReLU versus Leaky ReLU can be found on this [Medium article](https://medium.com/@sreeku.ralla/activation-functions-relu-vs-leaky-relu-b8272dc0b1be).
+
 * The **tanh** activation maps values to $(-1, 1)$: $f(z) = \tanh(z)$, with derivative $f'(z) = 1 - \tanh^2(z)$. 
+
 * The **unit-step** function outputs $+1$ for non-negative values and $-1$ otherwise, with its derivative approximated as 1 everywhere.
 
 The unit-step function is the base activation function that the perceptron model was built off. However, the step function is not differentiable, so it cannot be trained using gradient descent. Thus, as aforementioned, the `Perceptron` clas estimates the unit-step derivative as 1 to allow gradient-based training. Over time, the perceptron model has evolved to support differentiable non-linear functions like the ReLU and tanh, which is why the class includes them.
