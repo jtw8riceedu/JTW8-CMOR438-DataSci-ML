@@ -82,35 +82,24 @@ class PCA(object):
         X: array-like, shape (n_samples, n_features)
             Training data to fit.
         """    
-        
+                
         X = np.array(X)
-
-        # Center data column-wise. Scale externally when feature scales differ.
-        self.mean_ = np.mean(X, axis = 0)
+        self.mean_ = np.mean(X, axis=0)
         X_centered = X - self.mean_
 
-        # Compute covariance matrix
-        # Divide by n_rows - 1 to get the unbiased estimator
-        n_samples = X.shape[0]
-        cov_matrix = (X_centered.T @ X_centered) / (n_samples - 1)
+        # SVD is numerically stable and handles p >> n correctly
+        # economy/thin SVD: U is (n_samples × k), S is (k,), Vt is (k × n_features)
+        U, S, Vt = np.linalg.svd(X_centered, full_matrices=False)
 
-        # Derive the eigenvectors and eigenvalues of the covariance matrix
-        eigen_values, eigen_vectors = np.linalg.eigh(cov_matrix)
+        # Eigenvalues of the covariance matrix = S² / (n_samples - 1)
+        eigen_values = (S ** 2) / (X.shape[0] - 1)
 
-        # Sort the eigenvalues and eigenvectors and return the principal components
-        idx = np.argsort(eigen_values)[::-1]
-        eigen_values = eigen_values[idx]
-        eigen_vectors = eigen_vectors[:, idx]
+        # Eigenvectors are the rows of Vt (right singular vectors)
+        self.components_ = Vt[:self.n_components_].T  # shape (n_features, n_components)
 
-        # Store top principal components
-        self.components_ = eigen_vectors[:, :self.n_components_]
-
-        # Store explained variance
         self.explained_variance_ = eigen_values[:self.n_components_]
-
-        # Store explained variance ratio
         total_variance = np.sum(eigen_values)
-        self.explained_variance_ratio_ = eigen_values[:self.n_components_] / total_variance
+        self.explained_variance_ratio_ = self.explained_variance_ / total_variance
 
 
     # Function to project the data on the principal components
