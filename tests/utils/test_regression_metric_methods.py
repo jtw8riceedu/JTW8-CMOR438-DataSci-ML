@@ -1,11 +1,11 @@
 import numpy as np
 import pytest
 
-from src.ml_package.supervised_learning.decision_tree import DecisionTreeRegressor
-from src.ml_package.supervised_learning.knn import KNN
-from src.ml_package.supervised_learning.random_forest import RandomForestRegressor
-from src.ml_package.supervised_learning.voting import VotingRegressor
-from src.ml_package.utils import regression_metrics as metrics
+from ml_package.supervised_learning.decision_tree import DecisionTreeRegressor
+from ml_package.supervised_learning.knn import KNN
+from ml_package.supervised_learning.random_forest import RandomForestRegressor
+from ml_package.supervised_learning.voting import VotingRegressor
+from ml_package.utils import regression_metrics as metrics
 
 
 # ---------------------------------------------------------------------------

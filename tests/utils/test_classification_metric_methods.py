@@ -1,13 +1,13 @@
 import numpy as np
 import pytest
 
-from src.ml_package.supervised_learning.decision_tree import DecisionTreeClassifier
-from src.ml_package.supervised_learning.knn import KNN
-from src.ml_package.supervised_learning.logistic_regression import LogisticRegression
-from src.ml_package.supervised_learning.perceptron import Perceptron
-from src.ml_package.supervised_learning.random_forest import RandomForestClassifier
-from src.ml_package.supervised_learning.voting import HardVotingClassifier
-from src.ml_package.utils import classification_metrics as metrics
+from ml_package.supervised_learning.decision_tree import DecisionTreeClassifier
+from ml_package.supervised_learning.knn import KNN
+from ml_package.supervised_learning.logistic_regression import LogisticRegression
+from ml_package.supervised_learning.perceptron import Perceptron
+from ml_package.supervised_learning.random_forest import RandomForestClassifier
+from ml_package.supervised_learning.voting import HardVotingClassifier
+from ml_package.utils import classification_metrics as metrics
 
 
 # ---------------------------------------------------------------------------

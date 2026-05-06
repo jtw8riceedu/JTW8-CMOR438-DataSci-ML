@@ -604,18 +604,18 @@ class NeuralNetwork(object):
         nabla_b[-1] = delta.sum(axis = 1, keepdims = True) / m
         nabla_w[-1] = np.dot(delta, activations[-2].T) / m
 
-        for l in range(2, self.num_layers):
-            dsig = self.d_sigmoid(z_vals[-l])
+        for layer_idx in range(2, self.num_layers):
+            dsig = self.d_sigmoid(z_vals[-layer_idx])
 
             # Take the delta from and weights connecting to the next
             # layer, propagate it backward, then multiply by the 
             # sigmoid derivative at the current layer
 
-            delta = np.dot(self.weights[-l + 1].T, delta) * dsig
+            delta = np.dot(self.weights[-layer_idx + 1].T, delta) * dsig
 
             # Select activations from the previous layer
-            nabla_b[-l] = delta.sum(axis = 1, keepdims = True) / m
-            nabla_w[-l] = np.dot(delta, activations[-l - 1].T) / m
+            nabla_b[-layer_idx] = delta.sum(axis = 1, keepdims = True) / m
+            nabla_w[-layer_idx] = np.dot(delta, activations[-layer_idx - 1].T) / m
         
         return (nabla_b, nabla_w)
 

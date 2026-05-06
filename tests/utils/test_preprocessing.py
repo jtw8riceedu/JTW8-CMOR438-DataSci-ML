@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from src.ml_package.utils.preprocessing import (
+from ml_package.utils.preprocessing import (
     MinMaxScaler,
     StandardScaler,
     k_fold_split,
@@ -272,7 +272,7 @@ def test_train_val_test_sizes_sum():
 
 
 def test_randomized_search_invalid_n_iter():
-    from src.ml_package.supervised_learning.knn import KNN
+    from ml_package.supervised_learning.knn import KNN
     rng = np.random.default_rng(0)
     X = rng.standard_normal((40, 2))
     y = (X[:, 0] > 0).astype(int)
